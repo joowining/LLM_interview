@@ -1,26 +1,17 @@
-# OpenVINO (nightly)
---extra-index-url https://storage.openvinotoolkit.org/simple/wheels/nightly
+# Transformers 및 한국어 모델 로드용
+transformers>=4.43.1
+
+# OpenVINO 추론 및 변환
 openvino>=2024.2.0
-openvino-tokenizers[transformers]
+openvino-tokenizers
+optimum-intel
 
-# PyTorch CPU wheel repository
---extra-index-url https://download.pytorch.org/whl/cpu
-
-# Hugging Face Optimum-Intel (GitHub에서 직접 설치)
-git+https://github.com/huggingface/optimum-intel.git
-
-# 핵심 라이브러리
-nncf==2.14.1
-torch>=2.1
-datasets
-accelerate
+# UI용 Gradio (챗봇 인터페이스)
 gradio>=4.19
-huggingface-hub>=0.26.5
-einops
-transformers>=4.51.3
-transformers_stream_generator
-tiktoken
-bitsandbytes
 
-# macOS 전용 (선택 사항이므로 주석 처리)
-# numpy<2.0.0
+# PyTorch (모델 사전 로드용, OpenVINO 변환 시 필요)
+torch>=2.1.0
+
+# 기타 유틸리티
+einops
+tiktoken
