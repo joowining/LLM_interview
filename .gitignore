@@ -1,0 +1,73 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+pip-wheel-metadata/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VSCode, PyCharm project files
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
+
+# Model, tokenizer, cache files
+*.ckpt
+*.pt
+*.bin
+*.h5
+*.onnx
+*.pb
+*.tflite
+*.safetensors
+
+# Hugging Face & Transformers cache
+~/.cache/
+.cache/
+transformers_cache/
+datasets/
+tokenizers_cache/
+
+# OpenVINO cache / intermediate files
+openvino_cache/
+*.xml
+*.bin
+*.blob
+
+# Logs, weights, experiment runs
+logs/
+runs/
+checkpoints/
+wandb/
+lightning_logs/
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+
+# Jupyter notebook metadata
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# pyright, mypy, pytest artifacts
+.mypy_cache/
+.pyright/
+.pytest_cache/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
