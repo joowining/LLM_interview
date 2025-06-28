@@ -18,7 +18,7 @@ class LLMProcessor:
         self.model = OVModelForCausalLM.from_pretrained(self.model_name)
         self.system_messages = [{
             "role": "system",
-            "content": "당신은 IT회사에서 사람을 뽑기위해 고용된 면접관 입니다. 시작되면  사용자에게 1분 자기소개를 질문하고 그것을 듣고 판단해서 질문을 하나씩 이어가세요"  
+            "content": "당신은 IT회사에서 사람을 뽑기위해 고용된 면접관 입니다. 시작되면 사용자가 말하는 1분 자기소개를 듣고 판단해서 역량과 직무와 관련된 질문을 하나씩 하세요"  
         }]
 
     def get_response(self, user_input: str) -> str:
@@ -75,19 +75,41 @@ class LLMProcessor:
             sys.stdout = old_stdout
 
 
-### 🗣️ edge-tts 기반 실시간 TTS 함수
-async def speak_text(text: str):
-    filename = f"./tmp.mp3"
+    ### 🗣️ edge-tts 기반 실시간 TTS 함수
+    async def speak_text(text: str):
+        filename = f"./tmp.mp3"
 
-    # 음성 파일 저장
-    tts = edge_tts.Communicate(text, voice="ko-KR-SunHiNeural")
-    await tts.save(filename)
+        # 음성 파일 저장
+        tts = edge_tts.Communicate(text, voice="ko-KR-SunHiNeural")
+        await tts.save(filename)
 
-    # 저장된 음성 재생
-    playsound.playsound(filename)
+        # 저장된 음성 재생
+        playsound.playsound(filename)
 
-    # 재생 후 파일 삭제
-    os.remove(filename)
+        # 재생 후 파일 삭제
+        os.remove(filename)
+    
+    def run(self):
+        print("AI 면접관의 면접이 시작되었습니다. 나가려면 'exit'을 입력하세요.")
+        welcome_message = "먼저 1분자기소개를 통해 자기의 경험과 직무역량에 대해 설명해주세요"
+
+        
+        
+        while True:
+            user_input = input("\n사용자: ")
+            if user_input.strip().lower() == "exit":
+                print("채팅 종료")
+                break
+
+            response = self.get_response(user_input)
+            print(f"면접관: {response}")
+
+            # 음성 출력 (비동기 실행)
+            asyncio.run(self.speak_text(response))
+
+
+
+        
     
 
 
