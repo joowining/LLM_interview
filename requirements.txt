@@ -15,3 +15,7 @@ torch>=2.1.0
 # 기타 유틸리티
 einops
 tiktoken
+
+# 음성 출력 Text to Sound
+edge-tts
+playsound

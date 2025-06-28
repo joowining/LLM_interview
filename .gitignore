@@ -71,3 +71,8 @@ lightning_logs/
 build/
 dist/
 *.egg-info/
+
+
+# mp3, wav음성 파일 제외 
+*.mp3
+*.wav
