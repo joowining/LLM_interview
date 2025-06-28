@@ -1,0 +1,4 @@
+# 소리를 텍스트 파일로 
+whisper
+scipy
+sounddevice

@@ -10,6 +10,10 @@ env/
 ENV/
 pip-wheel-metadata/
 
+## extra virtual environments
+*/venv/
+**/venv/
+
 # Jupyter Notebook
 .ipynb_checkpoints/
 
@@ -76,3 +80,10 @@ dist/
 # mp3, wav음성 파일 제외 
 *.mp3
 *.wav
+
+*/*.wav
+**/*.wav
+*/*.mp3
+**/*.mp3
+
+
