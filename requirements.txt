@@ -18,7 +18,12 @@ tiktoken
 
 # 음성 출력 Text to Sound
 edge-tts
-playsound
+simpleaudio
+pydub
 
 # 음성 입력 Sound to Text
-fast_whisper
+faster_whisper
+sounddevice
+
+# 비동기 작업용 
+asyncio

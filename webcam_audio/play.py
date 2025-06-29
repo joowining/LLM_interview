@@ -6,7 +6,7 @@ import os
 # 모듈 import
 from audio_input import AudioInput
 from stt_processor import STTProcessor
-from llm_processor import LLMProcessor
+from webcam_audio.llm_processor_speak import LLMProcessor
 from tts_output import TTSOutput # TTS를 사용하지 않을 경우 주석 처리
 
 # --- 설정 ---
