@@ -14,6 +14,11 @@ from AudioSpeaker.AudioSpeaker import AudioSpeaker
 
 class LLMInterviewer:
     def __init__(self, model_name="OpenVINO/Qwen2.5-1.5B-Instruct-fp16-ov"):
+        '''
+        model의 이름을 default로 정하고 
+        토크나이저, 시스템 초기 설정 메지 등을 결정
+        다른 모듈 클래스 ( AudioListener, AudioSpeaker )를 가져와 속성으로 설정
+        '''
         self.model_name = model_name
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         self.model = OVModelForCausalLM.from_pretrained(self.model_name)
@@ -27,6 +32,11 @@ class LLMInterviewer:
         self.speaker = AudioSpeaker()
 
     def get_response(self, user_input: str) -> str:
+        '''
+        user_input을 인자로 받아
+        모델에게 메세지를 전달하고 
+        모델의 응답 메세지를 다시 반환 
+        '''
         self.system_messages.append({
             "role":"user",
             "content": user_input
@@ -77,9 +87,12 @@ class LLMInterviewer:
             sys.stdout = old_stdout
     
     def run(self):
+        '''
+        면접을 시작하는 함수 
+        '''
         print("AI 면접관의 면접이 시작되었습다. 종료를 원한다면 'exit'을 입력하세요")
-        welcome_message = ", , 반갑습니다 지원자님. 저는 AI면접관 옥순입니다. \
-            10초 동안 제가 제안하는 질문에 대하여 답해주세요.\
+        welcome_message = ",  .  반갑습니다 지원자님. 저는 AI면접관 옥순입니다. \
+            10초 동안 제가 제안하는 각 질문에 대하여 답해주세요.\
             먼저, 지금까지의 경험과 자신있는 직무 역량에 대해 설명해주세요."
         
         asyncio.run(self.speaker.speak(welcome_message))

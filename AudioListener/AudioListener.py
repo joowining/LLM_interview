@@ -5,6 +5,10 @@ import time
 
 class AudioListener:
     def __init__(self, device_index=7, record_duration=7):
+        '''
+        Audio에서 들어오는 입력을 받아들이기 위한 설정
+        및 들어오는 신호를 변환해주는 모델 크기 설정 
+        '''
         self.SAMPLERATE = 16000
         # 추가 사항 : 동적으로 오디오 입력 디바이스를 찾아내는 코드 필요 
         self.DEVICE_INDEX = device_index
@@ -14,6 +18,9 @@ class AudioListener:
         
     
     def listen(self, duration, samplerate, device_index) -> np.ndarray | None:
+        '''
+        10초간 듣고 입력신호를 수신한고 그 내용을 담아서 numpy.ndarray로 반환
+        '''
         recorded_data = [] 
         
         def callback(indata, frames, time_info, status):
@@ -33,6 +40,9 @@ class AudioListener:
        
     
     def start(self) -> str | None:
+        '''
+        들린 입력신호를 바탕으로 텍스트를 생성하고 반환
+        '''
         audio_data = self.listen(self.RECORD_DURATION, self.SAMPLERATE, self.DEVICE_INDEX)
 
         if audio_data is None or audio_data.size == 0:

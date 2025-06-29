@@ -9,6 +9,9 @@ class AudioSpeaker:
     
     
     async def speak(self, text: str) -> float:
+        '''
+        byte 스트림을 사용해서 입력 텍스트를 소리로 변환하여 발화
+        '''
         communicate = Communicate(text, voice="ko-KR-SunHiNeural")
 
         audio_buffer = bytearray()
