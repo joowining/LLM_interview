@@ -15,3 +15,15 @@ torch>=2.1.0
 # 기타 유틸리티
 einops
 tiktoken
+
+# 음성 출력 Text to Sound
+edge-tts
+simpleaudio
+pydub
+
+# 음성 입력 Sound to Text
+faster_whisper
+sounddevice
+
+# 비동기 작업용 
+asyncio
